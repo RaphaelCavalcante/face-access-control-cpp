@@ -1,0 +1,13 @@
+# Target labels
+ pahomqtt
+# Source files and their labels
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles/pahomqtt
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles/pahomqtt.rule
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles/pahomqtt-complete.rule
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/pahomqtt-prefix/src/pahomqtt-stamp/pahomqtt-install.rule
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/pahomqtt-prefix/src/pahomqtt-stamp/pahomqtt-mkdir.rule
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/pahomqtt-prefix/src/pahomqtt-stamp/pahomqtt-download.rule
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/pahomqtt-prefix/src/pahomqtt-stamp/pahomqtt-update.rule
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/pahomqtt-prefix/src/pahomqtt-stamp/pahomqtt-patch.rule
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/pahomqtt-prefix/src/pahomqtt-stamp/pahomqtt-configure.rule
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/pahomqtt-prefix/src/pahomqtt-stamp/pahomqtt-build.rule

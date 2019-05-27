@@ -1,0 +1,8 @@
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles/install/strip.dir
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles/install/local.dir
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles/edit_cache.dir
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles/cvservice.dir
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles/rebuild_cache.dir
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles/list_install_components.dir
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles/pahomqtt.dir
+/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles/install.dir

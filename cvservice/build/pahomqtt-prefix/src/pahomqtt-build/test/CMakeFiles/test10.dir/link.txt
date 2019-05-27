@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/test10.dir/test10.c.o  -o test10 -Wl,-rpath,/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/pahomqtt-prefix/src/pahomqtt-build/src ../src/libpaho-mqtt3c.so.1.3.0 -lc -ldl -lpthread 

@@ -35,7 +35,7 @@ class DataForm extends React.Component {
   }
 
   render() {
-    let bodyClasses = "form-body hide-form"; // CHANGE THIS TO "hide-form" WHEN FORM IS INTEGRATED
+    let bodyClasses = "form-body"; // CHANGE THIS TO "hide-form" WHEN FORM IS INTEGRATED
 
     if ( this.props.returnedPerson !== null && this.props.returnedPerson !== undefined ) {
       bodyClasses = "form-body";
@@ -53,12 +53,12 @@ class DataForm extends React.Component {
             <option value="C">{ CLEARANCE.C }</option>
             <option value="D">{ CLEARANCE.D }</option>
           </select>
-          { /*<label htmlFor="status">Status</label>
+          <label htmlFor="status">Status</label>
           <select name="status">
             <option value="Classified">Allowed</option>
             <option value="Most Secret">Allowed with Escort</option>
             <option value="Top Secret">Not Allowed</option>
-          </select> */}
+          </select>
           <label htmlFor="position">Position</label>
           <input type="text" name="position" value={ this.state.position } placeholder="job title" onChange={ this.handleChange } />
           <label htmlFor="age">Age</label>
