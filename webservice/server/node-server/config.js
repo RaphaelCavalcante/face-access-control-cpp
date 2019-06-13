@@ -1,7 +1,7 @@
 module.exports = {
-    database: {
-        file: "./db/data.db"
-    },
+    // database: {
+    //     file: "./db/data.db"
+    // },
 
     restify: {
         port: 8000,
@@ -12,12 +12,12 @@ module.exports = {
     },
     api: './api/swagger.json',
 
-    mqtt: {
+    /*mqtt: {
         backingStore: {
 
         },
         port: 1883,
         host: 'localhost',
         http: {port: 3000, bundle: true, static: './'}  
-    }
+    }*/
 }

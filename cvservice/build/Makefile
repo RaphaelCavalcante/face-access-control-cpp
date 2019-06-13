@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/data/Projects/prototype/face-access-control-cpp/cvservice
+CMAKE_SOURCE_DIR = /home/raphael/Project/cpp/face-access-control-cpp/cvservice
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build
+CMAKE_BINARY_DIR = /home/raphael/Project/cpp/face-access-control-cpp/cvservice/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,22 +68,10 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -112,6 +100,18 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -126,9 +126,9 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/raphael/Project/cpp/face-access-control-cpp/cvservice/build/CMakeFiles /home/raphael/Project/cpp/face-access-control-cpp/cvservice/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/raphael/Project/cpp/face-access-control-cpp/cvservice/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -169,19 +169,6 @@ cvservice/fast:
 	$(MAKE) -f CMakeFiles/cvservice.dir/build.make CMakeFiles/cvservice.dir/build
 .PHONY : cvservice/fast
 
-#=============================================================================
-# Target rules for targets named pahomqtt
-
-# Build rule for target.
-pahomqtt: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pahomqtt
-.PHONY : pahomqtt
-
-# fast build rule for target.
-pahomqtt/fast:
-	$(MAKE) -f CMakeFiles/pahomqtt.dir/build.make CMakeFiles/pahomqtt.dir/build
-.PHONY : pahomqtt/fast
-
 src/cvservice.o: src/cvservice.cpp.o
 
 .PHONY : src/cvservice.o
@@ -209,33 +196,6 @@ src/cvservice.cpp.s:
 	$(MAKE) -f CMakeFiles/cvservice.dir/build.make CMakeFiles/cvservice.dir/src/cvservice.cpp.s
 .PHONY : src/cvservice.cpp.s
 
-src/mqtt.o: src/mqtt.cpp.o
-
-.PHONY : src/mqtt.o
-
-# target to build an object file
-src/mqtt.cpp.o:
-	$(MAKE) -f CMakeFiles/cvservice.dir/build.make CMakeFiles/cvservice.dir/src/mqtt.cpp.o
-.PHONY : src/mqtt.cpp.o
-
-src/mqtt.i: src/mqtt.cpp.i
-
-.PHONY : src/mqtt.i
-
-# target to preprocess a source file
-src/mqtt.cpp.i:
-	$(MAKE) -f CMakeFiles/cvservice.dir/build.make CMakeFiles/cvservice.dir/src/mqtt.cpp.i
-.PHONY : src/mqtt.cpp.i
-
-src/mqtt.s: src/mqtt.cpp.s
-
-.PHONY : src/mqtt.s
-
-# target to generate assembly for a file
-src/mqtt.cpp.s:
-	$(MAKE) -f CMakeFiles/cvservice.dir/build.make CMakeFiles/cvservice.dir/src/mqtt.cpp.s
-.PHONY : src/mqtt.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -243,19 +203,15 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install/local"
 	@echo "... edit_cache"
 	@echo "... cvservice"
 	@echo "... rebuild_cache"
 	@echo "... list_install_components"
-	@echo "... pahomqtt"
+	@echo "... install/local"
 	@echo "... install"
 	@echo "... src/cvservice.o"
 	@echo "... src/cvservice.i"
 	@echo "... src/cvservice.s"
-	@echo "... src/mqtt.o"
-	@echo "... src/mqtt.i"
-	@echo "... src/mqtt.s"
 .PHONY : help
 
 

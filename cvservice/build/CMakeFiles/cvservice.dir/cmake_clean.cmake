@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/cvservice.dir/src/cvservice.cpp.o"
-  "CMakeFiles/cvservice.dir/src/mqtt.cpp.o"
   "cvservice.pdb"
   "cvservice"
 )

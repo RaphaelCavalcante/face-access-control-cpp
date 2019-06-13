@@ -41,7 +41,7 @@
 #include <sys/stat.h>
 #include <time.h>
 #include <vector>
-
+#include <librdkafka/rdkafka.h>
 // OpenCV includes
 #include <opencv2/imgproc.hpp>
 #include <opencv2/opencv.hpp>
@@ -49,7 +49,7 @@
 #include <opencv2/pvl/pvl.hpp>
 
 // MQTT
-#include "mqtt.h"
+//#include "mqtt.h"
 
 using namespace std;
 using namespace cv;
@@ -64,6 +64,7 @@ const int FONT = cv::FONT_HERSHEY_PLAIN;
 const Scalar GREEN(0, 255, 0);
 const Scalar BLUE(255, 0, 0);
 const Scalar WHITE(255, 255, 255);
+
 
 Ptr<FaceDetector> pvlFD;
 Ptr<FaceRecognizer> pvlFR;
@@ -83,19 +84,32 @@ string thumbnailPath;
 string lastTopic;
 string lastID;
 
+rd_kafka_t *rk;
+rd_kafka_topic_t *rkt;
+rd_kafka_conf_t *conf;
+
+
+static void dr_msg_cb(rd_kafka_t *rk, const rd_kafka_message_t *rkmessage, void *opaque){
+    if(rkmessage->err){
+        fprintf(stderr, "%% message delivery failed %s\n", rd_kafka_err2str(rkmessage->err));
+    } else {
+        fprintf(stderr, "%% message delivery failed (%zd bytes, partition %d)\n", rkmessage->len, rkmessage->partition);
+    }
+}
+
 // parse the command line arguments passed in, to determine which camera ID to use
 // also handle any ENV vars
 void parseArgs(int argc, const char* argv[]) {
     if (argc > 1) {
         cameraNumber = atoi(argv[1]);
     }
-
-    databaseLocation = std_getenv("FACE_DB");
+    
+    databaseLocation = "./default.xml";//std_getenv("FACE_DB");
     if (databaseLocation.empty()) {
         databaseLocation = DEFAULT_DB_LOCATION;
     }
 
-    thumbnailPath = std_getenv("FACE_IMAGES");
+    thumbnailPath = "../../webservice/server/node-server/public/profile/";//std_getenv("FACE_IMAGES");
     if (thumbnailPath.empty()) {
         thumbnailPath = DEFAULT_THUMBNAIL_PATH;
     }
@@ -114,15 +128,51 @@ void publishMQTTMessage(const string& topic, const string& id)
 
     string payload = "{\"id\": \"" + id + "\"}";
 
-    mqtt_publish(topic, payload);
+    //mqtt_publish(topic, payload);
 
     string msg = "MQTT message published to topic: " + topic;
     syslog(LOG_INFO, "%s", msg.c_str());
     syslog(LOG_INFO, "%s", payload.c_str());
 }
 
+bool initKafkaProducer(){
+
+    char errstr[512];
+    const char *brokers = "localhost:9092";
+    const char *topic = "face_detected";
+
+    conf = rd_kafka_conf_new();
+    if(rd_kafka_conf_set(
+        conf, 
+        "bootstrap.servers", brokers, errstr, sizeof(errstr)) 
+        != RD_KAFKA_CONF_OK){
+            fprintf(stderr, "%s\n", errstr);
+            return 1;
+    }
+
+    rd_kafka_conf_set_dr_msg_cb(conf, dr_msg_cb);
+    rk = rd_kafka_new(RD_KAFKA_PRODUCER, conf,errstr, sizeof(errstr));
+
+    if(!rk) {
+        fprintf(stderr,"%% failed to create topic object: %s\n", errstr);
+        return 1;
+    }
+    
+    rkt = rd_kafka_topic_new(rk, topic, NULL);
+
+    if(!rkt) {
+        std::cout<<"teste"<<std::endl;
+        fprintf(stderr,"%% failed to create topic object: %s\n", rd_kafka_err2str(rd_kafka_last_error()));
+        rd_kafka_destroy(rk);
+        return 1;
+    }
+
+    rd_kafka_poll(rk, 0);
+    return 1;
+}
+
 // message handler for the MQTT subscription for the "commands/register" topic
-int handleControlMessages(void *context, char *topicName, int topicLen, MQTTClient_message *message)
+int handleControlMessages(void *context, char *topicName, int topicLen)//, MQTTClient_message *message)
 {
     string topic = topicName;
     string msg = "MQTT message received: " + topic;
@@ -137,7 +187,6 @@ int handleControlMessages(void *context, char *topicName, int topicLen, MQTTClie
 // Open webcam input
 bool openWebcamInput(int cameraNumber) {
     webcam.open(cameraNumber);
-
     if (!webcam.isOpened())
     {
         syslog(LOG_ERR, "Error: fail to capture video.");
@@ -236,7 +285,7 @@ void recognizeFaces() {
         {
             recognizedFaces.push_back(detectedFaces[i]);
         }
-
+        
         pvlFR->recognize(imgGray, recognizedFaces, personIDs, confidence);
         bool saveNeeded = false;
 
@@ -244,23 +293,27 @@ void recognizeFaces() {
         {
             if (personIDs[i] == FACE_RECOGNIZER_UNKNOWN_PERSON_ID)
             {
+                std::string tests = "testeeeee";
+                rd_kafka_produce(rkt, RD_KAFKA_PARTITION_UA, RD_KAFKA_MSG_F_COPY, const_cast <char *> (tests.data()), tests.size(), NULL, 0, NULL);
                 if (performRegistration)
                 {
                     int personID = pvlFR->createNewPersonID();
                     pvlFR->registerFace(imgGray, detectedFaces[i], personID, true);
 
-                    publishMQTTMessage("person/registered", to_string(personID));
+                    // publishMQTTMessage("person/registered", to_string(personID));
+
 
                     string saveFileName = thumbnailPath+to_string(personID)+".jpg";
                     cv:imwrite(saveFileName.c_str(), imgIn);
 
                     saveNeeded = true;
                     performRegistration = false;
-                } else {
-                    publishMQTTMessage("person/seen", "UNKNOWN");
+                } else {                  
+                    
+                    // publishMQTTMessage("person/seen", "UNKNOWN");
                 }
             } else {
-                publishMQTTMessage("person/seen", to_string(personIDs[i]));
+                //publishMQTTMessage("person/seen", to_string(personIDs[i]));
             }
         }
 
@@ -302,6 +355,7 @@ void displayRecognitionInfo()
         cv::Size strSize = cv::getTextSize(str, FONT, 1.2, 2, NULL);
         cv::Point strPos(faceRect.x + (faceRect.width / 2) - (strSize.width / 2), faceRect.y - 2);
         cv::putText(imgIn, str, strPos, FONT, 1.2, GREEN, 2);
+        imshow("teste", imgIn);
     }
 }
 
@@ -330,21 +384,25 @@ void display() {
 int main(int argc, const char* argv[])
 {
     syslog(LOG_INFO, "Starting cvservice...");
-
     parseArgs(argc, argv);
 
     try
     {
-        int result = mqtt_start(handleControlMessages);
-        if (result == 0) {
-            syslog(LOG_INFO, "MQTT started.");
-        } else {
-            syslog(LOG_INFO, "MQTT NOT started: have you set the ENV varables?");
+        // int result = 0; //mqtt_start(handleControlMessages);
+        // if (result == 0) {
+        //     syslog(LOG_INFO, "MQTT started.");
+        // } else {
+        //     syslog(LOG_INFO, "MQTT NOT started: have you set the ENV varables?");
+        // }
+
+        // mqtt_connect();
+        // mqtt_subscribe("commands/register");
+        if(!initKafkaProducer()){
+            
+            throw runtime_error("Unable to initialize kafka producer");
+            return 1;
         }
-
-        mqtt_connect();
-        mqtt_subscribe("commands/register");
-
+        
         if (!openWebcamInput(cameraNumber)) {
             throw invalid_argument("Invalid camera number or unable to open camera device.");
             return 1;
@@ -365,10 +423,10 @@ int main(int argc, const char* argv[])
 
                 display();
             }
+            waitKey(1);
         }
-
-        mqtt_disconnect();
-        mqtt_close();
+        // mqtt_disconnect();
+        // mqtt_close();
         return 0;
     }
     catch(const std::exception& error)

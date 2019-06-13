@@ -13,10 +13,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.10.2/CMakeSystem.cmake"
   "CMakeFiles/feature_tests.c"
   "CMakeFiles/feature_tests.cxx"
-  "pahomqtt-prefix/tmp/pahomqtt-cfgcmd.txt.in"
   "../cmake/FindDemoOpenCV.cmake"
   "../cmake/osdetect.cmake"
-  "../cmake/pahomqtt.cmake"
   "/opt/intel/openvino_2019.1.133/opencv/cmake/OpenCVConfig-version.cmake"
   "/opt/intel/openvino_2019.1.133/opencv/cmake/OpenCVConfig.cmake"
   "/opt/intel/openvino_2019.1.133/opencv/cmake/OpenCVModules-release.cmake"
@@ -95,11 +93,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.10/Modules/Compiler/XL-CXX-DetermineCompiler.cmake"
   "/usr/share/cmake-3.10/Modules/Compiler/zOS-C-DetermineCompiler.cmake"
   "/usr/share/cmake-3.10/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake"
-  "/usr/share/cmake-3.10/Modules/ExternalProject.cmake"
-  "/usr/share/cmake-3.10/Modules/FindGit.cmake"
   "/usr/share/cmake-3.10/Modules/FindPackageHandleStandardArgs.cmake"
   "/usr/share/cmake-3.10/Modules/FindPackageMessage.cmake"
-  "/usr/share/cmake-3.10/Modules/FindPkgConfig.cmake"
   "/usr/share/cmake-3.10/Modules/Internal/FeatureTesting.cmake"
   "/usr/share/cmake-3.10/Modules/Platform/Linux-Determine-CXX.cmake"
   "/usr/share/cmake-3.10/Modules/Platform/Linux-GNU-C.cmake"
@@ -107,7 +102,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.10/Modules/Platform/Linux-GNU.cmake"
   "/usr/share/cmake-3.10/Modules/Platform/Linux.cmake"
   "/usr/share/cmake-3.10/Modules/Platform/UnixPaths.cmake"
-  "/usr/share/cmake-3.10/Modules/RepositoryInfo.txt.in"
   )
 
 # The corresponding makefile is:
@@ -123,13 +117,10 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/3.10.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.10.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.10.2/CMakeCXXCompiler.cmake"
-  "pahomqtt-prefix/src/pahomqtt-stamp/pahomqtt-gitinfo.txt"
-  "pahomqtt-prefix/tmp/pahomqtt-cfgcmd.txt"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/cvservice.dir/DependInfo.cmake"
-  "CMakeFiles/pahomqtt.dir/DependInfo.cmake"
   )

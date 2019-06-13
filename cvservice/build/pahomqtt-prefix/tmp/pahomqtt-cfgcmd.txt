@@ -1,1 +1,0 @@
-cmd='/usr/bin/cmake;-DPAHO_WITH_SSL=TRUE;-DCMAKE_INSTALL_PREFIX=/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/paho-build;-GUnix Makefiles;<SOURCE_DIR><SOURCE_SUBDIR>'

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/data/Projects/prototype/face-access-control-cpp/cvservice
+CMAKE_SOURCE_DIR = /home/raphael/Project/cpp/face-access-control-cpp/cvservice
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build
+CMAKE_BINARY_DIR = /home/raphael/Project/cpp/face-access-control-cpp/cvservice/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/cvservice.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/cvservice.dir/flags.make
 
 CMakeFiles/cvservice.dir/src/cvservice.cpp.o: CMakeFiles/cvservice.dir/flags.make
 CMakeFiles/cvservice.dir/src/cvservice.cpp.o: ../src/cvservice.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cvservice.dir/src/cvservice.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cvservice.dir/src/cvservice.cpp.o -c /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/src/cvservice.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/raphael/Project/cpp/face-access-control-cpp/cvservice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cvservice.dir/src/cvservice.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cvservice.dir/src/cvservice.cpp.o -c /home/raphael/Project/cpp/face-access-control-cpp/cvservice/src/cvservice.cpp
 
 CMakeFiles/cvservice.dir/src/cvservice.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cvservice.dir/src/cvservice.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/src/cvservice.cpp > CMakeFiles/cvservice.dir/src/cvservice.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/raphael/Project/cpp/face-access-control-cpp/cvservice/src/cvservice.cpp > CMakeFiles/cvservice.dir/src/cvservice.cpp.i
 
 CMakeFiles/cvservice.dir/src/cvservice.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cvservice.dir/src/cvservice.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/src/cvservice.cpp -o CMakeFiles/cvservice.dir/src/cvservice.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/raphael/Project/cpp/face-access-control-cpp/cvservice/src/cvservice.cpp -o CMakeFiles/cvservice.dir/src/cvservice.cpp.s
 
 CMakeFiles/cvservice.dir/src/cvservice.cpp.o.requires:
 
@@ -81,40 +81,14 @@ CMakeFiles/cvservice.dir/src/cvservice.cpp.o.provides: CMakeFiles/cvservice.dir/
 CMakeFiles/cvservice.dir/src/cvservice.cpp.o.provides.build: CMakeFiles/cvservice.dir/src/cvservice.cpp.o
 
 
-CMakeFiles/cvservice.dir/src/mqtt.cpp.o: CMakeFiles/cvservice.dir/flags.make
-CMakeFiles/cvservice.dir/src/mqtt.cpp.o: ../src/mqtt.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cvservice.dir/src/mqtt.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cvservice.dir/src/mqtt.cpp.o -c /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/src/mqtt.cpp
-
-CMakeFiles/cvservice.dir/src/mqtt.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cvservice.dir/src/mqtt.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/src/mqtt.cpp > CMakeFiles/cvservice.dir/src/mqtt.cpp.i
-
-CMakeFiles/cvservice.dir/src/mqtt.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cvservice.dir/src/mqtt.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/src/mqtt.cpp -o CMakeFiles/cvservice.dir/src/mqtt.cpp.s
-
-CMakeFiles/cvservice.dir/src/mqtt.cpp.o.requires:
-
-.PHONY : CMakeFiles/cvservice.dir/src/mqtt.cpp.o.requires
-
-CMakeFiles/cvservice.dir/src/mqtt.cpp.o.provides: CMakeFiles/cvservice.dir/src/mqtt.cpp.o.requires
-	$(MAKE) -f CMakeFiles/cvservice.dir/build.make CMakeFiles/cvservice.dir/src/mqtt.cpp.o.provides.build
-.PHONY : CMakeFiles/cvservice.dir/src/mqtt.cpp.o.provides
-
-CMakeFiles/cvservice.dir/src/mqtt.cpp.o.provides.build: CMakeFiles/cvservice.dir/src/mqtt.cpp.o
-
-
 # Object files for target cvservice
 cvservice_OBJECTS = \
-"CMakeFiles/cvservice.dir/src/cvservice.cpp.o" \
-"CMakeFiles/cvservice.dir/src/mqtt.cpp.o"
+"CMakeFiles/cvservice.dir/src/cvservice.cpp.o"
 
 # External object files for target cvservice
 cvservice_EXTERNAL_OBJECTS =
 
 cvservice: CMakeFiles/cvservice.dir/src/cvservice.cpp.o
-cvservice: CMakeFiles/cvservice.dir/src/mqtt.cpp.o
 cvservice: CMakeFiles/cvservice.dir/build.make
 cvservice: /opt/intel/openvino_2019.1.133/opencv/lib/libopencv_dnn.so.4.1.0
 cvservice: /opt/intel/openvino_2019.1.133/opencv/lib/libopencv_gapi.so.4.1.0
@@ -133,7 +107,7 @@ cvservice: /opt/intel/openvino_2019.1.133/opencv/lib/libopencv_imgcodecs.so.4.1.
 cvservice: /opt/intel/openvino_2019.1.133/opencv/lib/libopencv_imgproc.so.4.1.0
 cvservice: /opt/intel/openvino_2019.1.133/opencv/lib/libopencv_core.so.4.1.0
 cvservice: CMakeFiles/cvservice.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable cvservice"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/raphael/Project/cpp/face-access-control-cpp/cvservice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable cvservice"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cvservice.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -142,7 +116,6 @@ CMakeFiles/cvservice.dir/build: cvservice
 .PHONY : CMakeFiles/cvservice.dir/build
 
 CMakeFiles/cvservice.dir/requires: CMakeFiles/cvservice.dir/src/cvservice.cpp.o.requires
-CMakeFiles/cvservice.dir/requires: CMakeFiles/cvservice.dir/src/mqtt.cpp.o.requires
 
 .PHONY : CMakeFiles/cvservice.dir/requires
 
@@ -151,6 +124,6 @@ CMakeFiles/cvservice.dir/clean:
 .PHONY : CMakeFiles/cvservice.dir/clean
 
 CMakeFiles/cvservice.dir/depend:
-	cd /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/data/Projects/prototype/face-access-control-cpp/cvservice /mnt/data/Projects/prototype/face-access-control-cpp/cvservice /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build /mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/CMakeFiles/cvservice.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/raphael/Project/cpp/face-access-control-cpp/cvservice/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/raphael/Project/cpp/face-access-control-cpp/cvservice /home/raphael/Project/cpp/face-access-control-cpp/cvservice /home/raphael/Project/cpp/face-access-control-cpp/cvservice/build /home/raphael/Project/cpp/face-access-control-cpp/cvservice/build /home/raphael/Project/cpp/face-access-control-cpp/cvservice/build/CMakeFiles/cvservice.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/cvservice.dir/depend
 

@@ -1,1 +1,0 @@
-/usr/bin/cc   -rdynamic CMakeFiles/Sha1TestOpenSSL.dir/SHA1.c.o  -o Sha1TestOpenSSL -lssl -lcrypto 

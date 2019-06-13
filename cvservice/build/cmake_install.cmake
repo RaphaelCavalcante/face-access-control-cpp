@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/data/Projects/prototype/face-access-control-cpp/cvservice
+# Install script for directory: /home/raphael/Project/cpp/face-access-control-cpp/cvservice
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,12 +44,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/cvservice"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/cvservice")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/raphael/Project/cpp/face-access-control-cpp/cvservice/build/cvservice")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/cvservice" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/cvservice")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/cvservice"
-         OLD_RPATH "/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/paho-build/lib:/opt/intel/openvino_2019.1.133/opencv/lib:"
+         OLD_RPATH "/opt/intel/openvino_2019.1.133/opencv/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/cvservice")
@@ -65,5 +65,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/raphael/Project/cpp/face-access-control-cpp/cvservice/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -6,5 +6,5 @@ CXX_FLAGS =   -pthread -std=c++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /opt/intel/openvino_2019.1.133/opencv/include -I/mnt/data/Projects/prototype/face-access-control-cpp/cvservice/build/paho-build/include 
+CXX_INCLUDES = -isystem /opt/intel/openvino_2019.1.133/opencv/include 
 

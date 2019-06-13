@@ -32,15 +32,15 @@ endif( )
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 # Install paho MQTT dependency
-include(pahomqtt)
+#include(pahomqtt)
 
 # Application executables
 set(DETECTOR cvservice)
-set(DSOURCES src/cvservice.cpp src/mqtt.cpp)
+set(DSOURCES src/cvservice.cpp)
 add_executable(${DETECTOR} ${DSOURCES})
-add_dependencies(${DETECTOR} pahomqtt)
+#add_dependencies(${DETECTOR} pahomqtt)
 set_target_properties(${DETECTOR} ${TRAINER} PROPERTIES COMPILE_FLAGS "-pthread -std=c++11")
-target_link_libraries (${DETECTOR} ${OpenCV_LIBS} paho-mqtt3cs)
+target_link_libraries (${DETECTOR} ${OpenCV_LIBS} rdkafka++ rdkafka)
 
 # Install
 install(TARGETS ${DETECTOR} DESTINATION bin)
