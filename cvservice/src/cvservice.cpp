@@ -367,10 +367,10 @@ void outputFrame() {
     for(int j = 0;j < imgIn.rows;j++){
       for(int i = 0;i < imgIn.cols;i++){
           pixel = imgIn.at<Vec3b>(j, i);
-          printf("%c%c%c", pixel[0], pixel[1], pixel[2]);
+          //printf("%c%c%c", pixel[0], pixel[1], pixel[2]);
       }
     }
-    fflush(stdout);
+    //fflush(stdout);
 }
 
 // display the window image
